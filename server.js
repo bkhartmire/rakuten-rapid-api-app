@@ -1,8 +1,8 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
-const axios = require("axios");
 const bodyParser = require("body-parser");
+import { getBirthdayData } from "./src/utils/api.js";
 
 require("dotenv").config();
 
@@ -20,6 +20,19 @@ app.use(
 app.use(express.static(path.resolve(__dirname, "dist")));
 
 // endpoints
+app.get("/birthday/:year/:month/:day", async (req, res) => {
+  try {
+    const result = await getBirthdayData(
+      req.params.year,
+      req.params.month,
+      req.params.day
+    );
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(404);
+  }
+});
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
