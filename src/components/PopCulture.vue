@@ -1,22 +1,19 @@
 <template>
   <div id="general-results">
-    <h1>General Results</h1>
-     <ExistentialFacts/>
-     <PopCulture/>
+    <h1>Pop Culture</h1>
+    <div class="general" v-for="(value,key) in $store.generalResults">
+      <div class="metric-age"/>
+      <div class="life-expectancy"/>
+   
+      <div class="top-song"/>
     </div>
   </div>
 </template>
 
 <script>
-import ExistentialFacts from "./ExistentialFacts.vue"
-import PopCulture from "./PopCulture.vue"
 
 export default {
   name: 'general-results',
-  components:{
-    ExistentialFacts,
-    PopCulture
-  }
 }
 </script>
 
@@ -43,3 +40,9 @@ export default {
 //     "Died-anne Buried"
 //   ]
 // }
+
+
+
+
+   <div class="people-who-died"/>
+      <div class="birthday-buddies"/>
