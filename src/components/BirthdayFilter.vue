@@ -23,8 +23,10 @@ export default {
       get() {
           return this.$store.state.date;
       },
-      set(date) {
-          this.$store.commit("setDate", date);
+      async set(date) {
+          await this.$store.commit("setDate", date);
+          this.$store.dispatch("getGeneralResults");
+          this.$store.dispatch("getHeadlinesResults");
       }
     },
   },
