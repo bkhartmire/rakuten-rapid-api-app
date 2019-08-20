@@ -12,3 +12,5 @@ function getBirthdayData() {
   }
   return apiPromiseDummy;
 }
+
+module.exports = get
