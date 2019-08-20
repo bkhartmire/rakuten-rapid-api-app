@@ -2,7 +2,7 @@ const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
 const bodyParser = require("body-parser");
-import { getBirthdayData } from "./src/utils/api.js";
+const { getBirthdayData, getHeadlines } = require("./src/utils/api.js");
 
 require("dotenv").config();
 
@@ -27,6 +27,16 @@ app.get("/birthday/:year/:month/:day", async (req, res) => {
       req.params.month,
       req.params.day
     );
+    res.send(result);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(404);
+  }
+});
+
+app.get("/headlines/:year/:month", async (req, res) => {
+  try {
+    const result = await getHeadlines(req.params.year, req.params.month);
     res.send(result);
   } catch (err) {
     console.log(err);
