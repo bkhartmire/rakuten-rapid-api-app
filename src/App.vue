@@ -1,17 +1,24 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <BirthdayFilter />
+    <GeneralResults/>
+    <Headlines/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BirthdayFilter from './components/BirthdayFilter.vue'
+import Headlines from './components/Headlines.vue'
+import GeneralResults from './components/GeneralResults.vue'
+
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    BirthdayFilter,
+    Headlines,
+    GeneralResults
   }
 }
 </script>
