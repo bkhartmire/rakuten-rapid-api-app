@@ -1,10 +1,11 @@
 <template>
   <div id="pop-culture">
-  <BJumbotron class="jumboPop" header="Pop Culture">
+  <BJumbotron class="jumbo-pop" header="Pop Culture">
   <BListGroup>
   <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
-    <!-- <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div> !-->
+    <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+    <iframe id="ytplayer" type="text/html" v-bind:src="$store.state.generalResults.topSong.link" frameborder="0"></iframe>
     </BListGroupItem>
       <BListGroupItem   class="flex-column align-items-start">
     <div class="birthday-buddy">
@@ -49,12 +50,13 @@ export default {
 <style>
 #pop-culture {
     display: inline-block;
-    width: 50%;
+    width: 48%;
+    margin:10px;
     align-items: right;
     vertical-align: top;
 }
-.jumboPop {
-    padding:0;
+.jumbo-pop {
+
     
 }
 
