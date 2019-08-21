@@ -1,23 +1,22 @@
 <template>
   <div id="general-results">
     <h1>General Results</h1>
-     <ExistentialFacts/>
-     <PopCulture/>
-    </div>
+    <ExistentialFacts />
+    <PopCulture />
   </div>
 </template>
 
 <script>
-import ExistentialFacts from "./ExistentialFacts.vue"
-import PopCulture from "./PopCulture.vue"
+import ExistentialFacts from "./ExistentialFacts.vue";
+import PopCulture from "./PopCulture.vue";
 
 export default {
-  name: 'general-results',
-  components:{
+  name: "general-results",
+  components: {
     ExistentialFacts,
     PopCulture
   }
-}
+};
 </script>
 
 <style>
@@ -26,22 +25,3 @@ export default {
 }
 </style>
 
-// {
-//   "topSong": {
-//     "title": "whatever",
-//     "artist": "whoever"
-//   },
-//   "metricBirthdate": "10000",
-//   "lifeExpectancy": {
-//     "male": 2060,
-//     "female": 2068
-//   },
-//   "birthdayBuddies": [
-//     "Name Namerson",
-//     "Namely Nameland"
-//   ],
-//   "peopleWhoDied": [
-//     "I. M. Dead",
-//     "Died-anne Buried"
-//   ]
-// }

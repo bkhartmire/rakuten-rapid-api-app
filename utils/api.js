@@ -127,6 +127,41 @@ const getBirth = async (month, day) => {
   return resp.data.contents.pop();
 };
 
+const getTopSong = async (year, month, day) => {
+  const topSong = await axios.get(
+    `https://billboard-api2.p.rapidapi.com/hot-100?date=${year}-${month}-${day}&range=1-10`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.BILLBOARD_DATA_API_HOST,
+        "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
+      }
+    }
+  );
+  const songData = topSong.data;
+
+  const title = songData.content[1].title;
+  const artist = songData.content[1].artist;
+
+  const link = await getSongLink(title, artist);
+
+  const song = {
+    title,
+    artist,
+    link
+  };
+  return song;
+};
+
+const getSongLink = async (title, artist) => {
+  const search = encodeURIComponent(title + "" + artist);
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${
+    process.env.YOUTUBE_API_KEY
+  }`;
+  const searchResults = await axios.get(url);
+  const videoId = searchResults.data.items[0].id.videoId;
+  return `https://www.youtube.com/watch?v=${videoId}`;
+};
+
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
   // Ex: { country: 'Japan', city: 'Tokyo', lat: 35.6882, long: 139.7532 }
@@ -134,8 +169,8 @@ const getBirthdayData = async (year, month, day) => {
   const timeLeft = await getTimeLeft(locationData.country, year);
   // Ex: { male: { remaining: 63, year: 2082 }, female: { remaining: 70, year: 2089 } }
 
-  const time = `${year}-${month}-${day}T12:00:00`;
-  const weather = await getWeather(locationData.lat, locationData.long, time);
+  // const time = `${year}-${month}-${day}T12:00:00`;
+  // const weather = await getWeather(locationData.lat, locationData.long, time);
   // Ex: { summary: 'Partly cloudy throughout the day.', tempHigh: '58.54 F', tempLow: '39.99 F' }
 
   const personWhoDied = await getDeath(month, day);
@@ -146,16 +181,20 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { name: 'Gaetano Donizetti', occupation: 'Composer', notable: 'Lucia di Lammermoor', born: '1797-11-29', died: '1848-04-08' }
   // warning that some of these values might be null
 
-  const dummyObject = {
-    topSong: { title: "whatever", artist: "whoever" },
+  // const topSong = await getTopSong(year, month, day);
+  // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
+
+  const result = {
+    topSong: {title: "I'm Too Sexy", artist: "Right Said Fred", link: "https://www.youtube.com/embed/P5mtclwloEQ"},
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },
-    weather,
+    // weather,
     personWhoDied,
     birthdayBuddy
   };
-  return dummyObject;
+  return result;
 };
 
+getTopSong("1992", "02", "01");
 module.exports = { getBirthdayData, getHeadlines };
