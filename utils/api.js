@@ -138,6 +138,7 @@ const getTopSong = async (year, month, day) => {
     }
   );
   const songData = topSong.data;
+
   const song = {
     title: songData.content[1].title,
     artist: songData.content[1].artist
@@ -152,8 +153,8 @@ const getBirthdayData = async (year, month, day) => {
   const timeLeft = await getTimeLeft(locationData.country, year);
   // Ex: { male: { remaining: 63, year: 2082 }, female: { remaining: 70, year: 2089 } }
 
-  const time = `${year}-${month}-${day}T12:00:00`;
-  const weather = await getWeather(locationData.lat, locationData.long, time);
+  // const time = `${year}-${month}-${day}T12:00:00`;
+  // const weather = await getWeather(locationData.lat, locationData.long, time);
   // Ex: { summary: 'Partly cloudy throughout the day.', tempHigh: '58.54 F', tempLow: '39.99 F' }
 
   const personWhoDied = await getDeath(month, day);
@@ -167,16 +168,16 @@ const getBirthdayData = async (year, month, day) => {
   const topSong = await getTopSong(year, month, day);
   // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
 
-  const dummyObject = {
+  const result = {
     topSong,
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },
-    weather,
+    // weather,
     personWhoDied,
     birthdayBuddy
   };
-  return dummyObject;
+  return result;
 };
 
 module.exports = { getBirthdayData, getHeadlines };

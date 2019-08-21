@@ -10,25 +10,33 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    date: new Date(2016, 9, 16),
+    showGeneralResults: false,
+    showHeadlinesResults: false,
+    loadingGeneral: false,
+    loadingHeadlines: false,
+    date: new Date(),
     disabledDates: {
-      to: new Date(2016, 0, 5)
+      to: new Date(1946, 0, 5)
     },
     generalResults: {},
     headlinesResults: []
   },
-  // headLines: {
 
-  // },
   mutations: {
     setDate(state, date) {
       state.date = date;
+      state.loadingGeneral = true;
+      state.loadingHeadlines = true;
     },
     setGeneralResults(state, generalResults) {
       state.generalResults = generalResults;
+      state.showGeneralResults = true;
+      state.loadingGeneral = false;
     },
     setHeadlinesResults(state, headlinesResults) {
       state.headlinesResults = headlinesResults;
+      state.showHeadlinesResults = true;
+      state.loadingHeadlines = false;
     }
   },
   actions: {
