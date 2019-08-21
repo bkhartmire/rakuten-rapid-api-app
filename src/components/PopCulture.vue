@@ -1,29 +1,51 @@
 <template>
   <div id="pop-culture">
-    <h1>Pop Culture</h1>
+  <BJumbotron class="jumboPop" header="Pop Culture">
+  <BListGroup>
+  <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
-    <div class="billboard-artist">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+    <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+    </BListGroupItem>
+      <BListGroupItem   class="flex-column align-items-start">
+
     <h2> Notable Birthday Buddies </h2>
     <div v-for="buddy in $store.state.generalResults.birthdayBuddies">
         <div>{{buddy}}</div>
     </div>
+    </BListGroupItem>
+
+    </BListGroupItem>
+    </BListGroup>
+    </BJumbotron>
+    
 
   </div>
 </template>
 
 <script>
+import { BJumbotron, BListGroup, BListGroupItem} from 'bootstrap-vue'
 
 export default {
   name: 'pop-culture',
+  component:{
+      BListGroup,
+      BListGroupItem,
+  }
 }
 </script>
 
 <style>
 #pop-culture {
-    float:right;
-    width:50%;
-
+    display: inline-block;
+    width: 50%;
+    align-items: right;
+    vertical-align: top;
 }
+.jumboPop {
+    padding:0;
+    
+}
+
 
 </style>
 

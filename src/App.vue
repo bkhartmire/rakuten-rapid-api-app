@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <BirthdayFilter />
     <GeneralResults/>
     <Headlines/>
@@ -11,6 +10,7 @@
 import BirthdayFilter from './components/BirthdayFilter.vue'
 import Headlines from './components/Headlines.vue'
 import GeneralResults from './components/GeneralResults.vue'
+
 
 
 export default {

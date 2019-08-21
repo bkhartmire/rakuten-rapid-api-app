@@ -21,7 +21,9 @@ export default {
 </script>
 
 <style>
-
+#general-results {
+  style:block;
+}
 </style>
 
 // {
