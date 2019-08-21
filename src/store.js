@@ -12,7 +12,7 @@ export default new Vuex.Store({
   state: {
     date: new Date(2016, 9, 16),
     disabledDates: {
-      to: new Date(2016, 0, 5)
+      to: new Date(1936, 0, 5)
     },
     generalResults: {},
     headlinesResults: []
