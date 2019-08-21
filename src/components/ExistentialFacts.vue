@@ -61,3 +61,12 @@ export default {
 //     "Died-anne Buried"
 //   ]
 // }
+
+    // topSong: { title: "whatever", artist: "whoever" },
+    // metricBirthdate: getAgeInDays(year, month, day),
+    // lifeExpectancy: timeLeft,
+
+    // location: { country: locationData.country, city: locationData.city },
+    // weather,
+    // birthdayBuddies: ["Name Namerson", "Namely Nameland"],
+    // peopleWhoDied: ["I. M. Dead", "Died-anne Buried"]
