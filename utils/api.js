@@ -148,17 +148,19 @@ const getTopSong = async (year, month, day) => {
     title,
     artist,
     link
-  }
+  };
   return song;
 };
 
- const getSongLink = async (title, artist) => {
-   const search = encodeURIComponent(title + "" + artist);
-   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`
-   const searchResults = await axios.get(url);
-   const videoId = searchResults.data.items[0].id.videoId;
-   return `https://www.youtube.com/watch?v=${videoId}`;
- }
+const getSongLink = async (title, artist) => {
+  const search = encodeURIComponent(title + "" + artist);
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${
+    process.env.YOUTUBE_API_KEY
+  }`;
+  const searchResults = await axios.get(url);
+  const videoId = searchResults.data.items[0].id.videoId;
+  return `https://www.youtube.com/watch?v=${videoId}`;
+};
 
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
@@ -179,11 +181,11 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { name: 'Gaetano Donizetti', occupation: 'Composer', notable: 'Lucia di Lammermoor', born: '1797-11-29', died: '1848-04-08' }
   // warning that some of these values might be null
 
-  const topSong = await getTopSong(year, month, day);
+  // const topSong = await getTopSong(year, month, day);
   // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
 
   const result = {
-    topSong,
+    // topSong,
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },

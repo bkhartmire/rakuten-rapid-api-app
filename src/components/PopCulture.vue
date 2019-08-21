@@ -2,9 +2,9 @@
   <div id="pop-culture">
     <h1>Pop Culture</h1>
     <h2>Billboard #1</h2>
-    <div
+    <!-- <div
       class="billboard-artist"
-    >{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+    >{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>-->
     <div class="birthday-buddy">
       <h2>Notable Birthday Buddy</h2>
       <h3>{{$store.state.generalResults.birthdayBuddy.name}}</h3>
