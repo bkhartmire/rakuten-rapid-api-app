@@ -2,6 +2,7 @@ const axios = require("axios");
 require("dotenv").config();
 
 const getHeadlines = async (year, month, day) => {
+  console.log(year, month, day);
   if (month.length === 2 && month[0] === "0") {
     month = month[1];
   }
