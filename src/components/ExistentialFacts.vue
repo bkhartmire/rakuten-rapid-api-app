@@ -26,16 +26,18 @@
           >{{$store.state.generalResults.lifeExpectancy.female.remaining}} years left</div>
         </div>
       </div>
-      <div class="people-who-died">
+      <div class="person-who-died">
         <span>Notable Death on This Day</span>
-        <div class="personWhoDied">
-          <h3>{{$store.state.personWhoDied.name}}</h3>
-          <h4 v-if="$store.state.personWhoDied.occupation">{{$store.state.personWhoDied.occupation}}</h4>
-          <h4 v-if="$store.state.personWhoDied.notable">{{$store.state.personWhoDied.notable}}</h4>
-          <h4
-            v-if="$store.state.personWhoDied.born && $store.state.personWhoDied.died"
-          >{{$store.state.personWhoDied.born}} - {{$store.state.personWhoDied.died}}</h4>
-        </div>
+        <h3>{{$store.state.generalResults.personWhoDied.name}}</h3>
+        <h4
+          v-if="$store.state.generalResults.personWhoDied.occupation"
+        >{{$store.state.generalResults.personWhoDied.occupation}}</h4>
+        <h4
+          v-if="$store.state.generalResults.personWhoDied.notable"
+        >{{$store.state.generalResults.personWhoDied.notable}}</h4>
+        <h4
+          v-if="$store.state.generalResults.personWhoDied.born && $store.state.generalResults.personWhoDied.died"
+        >{{$store.state.generalResults.personWhoDied.born}} - {{$store.state.generalResults.personWhoDied.died}}</h4>
       </div>
     </div>
   </div>
@@ -49,9 +51,9 @@ export default {
 
 
 <style scoped>
-#existential-facts{
-    float:left;
-    width:50%;
+#existential-facts {
+  float: left;
+  width: 50%;
 }
 </style>
 
