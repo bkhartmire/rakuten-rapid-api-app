@@ -50,7 +50,8 @@ li {
 a {
   color: #42b983;
 }
-#datePicker {
-  
+.vdp-datepicker {
+    text-align: center;
 }
+
 </style>

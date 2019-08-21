@@ -128,14 +128,15 @@ const getBirth = async (month, day) => {
 };
 
 const getTopSong = async (year, month, day) => {
-  const topSong = await axios.get(`https://billboard-api2.p.rapidapi.com/hot-100?date=${year}-${month}-${day}&range=1-10`,
-  {
-    headers: {
-    "X-RapidAPI-Host": process.env.BILLBOARD_DATA_API_HOST,
-    "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
+  const topSong = await axios.get(
+    `https://billboard-api2.p.rapidapi.com/hot-100?date=${year}-${month}-${day}&range=1-10`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.BILLBOARD_DATA_API_HOST,
+        "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
+      }
     }
-  });
-
+  );
   const songData = topSong.data;
 
   const title = songData.content[1].title;
@@ -149,7 +150,7 @@ const getTopSong = async (year, month, day) => {
     link
   }
   return song;
- };
+};
 
  const getSongLink = async (title, artist) => {
    const search = encodeURIComponent(title + "" + artist);
@@ -182,7 +183,7 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
 
   const dummyObject = {
-    topSong: topSong,
+    topSong,
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },
