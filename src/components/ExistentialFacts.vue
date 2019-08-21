@@ -47,5 +47,12 @@ export default {
 };
 </script>
 
-<style>
+
+<style scoped>
+#existential-facts{
+    float:left;
+    width:50%;
+}
 </style>
+
+
