@@ -182,10 +182,14 @@ const getBirthdayData = async (year, month, day) => {
   // warning that some of these values might be null
 
   // const topSong = await getTopSong(year, month, day);
-  // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
+  // Ex: { title: 'Like a Virgin', artist: 'Madonna', link: "someyoutubelink.com"}
 
   const result = {
-    topSong: {title: "I'm Too Sexy", artist: "Right Said Fred", link: "https://www.youtube.com/embed/P5mtclwloEQ"},
+    topSong: {
+      title: "I'm Too Sexy",
+      artist: "Right Said Fred",
+      link: "https://www.youtube.com/embed/P5mtclwloEQ"
+    },
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },
