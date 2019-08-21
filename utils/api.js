@@ -185,7 +185,7 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { title: 'Like a Virgin', artist: 'Madonna'}
 
   const result = {
-    // topSong,
+    topSong: {title: "I'm Too Sexy", artist: "Right Said Fred", link: "https://www.youtube.com/embed/P5mtclwloEQ"},
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },

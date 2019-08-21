@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
     <BirthdayFilter />
     <div v-if="$store.state.showGeneralResults">
       <GeneralResults />
@@ -24,6 +23,7 @@ import BirthdayFilter from "./components/BirthdayFilter.vue";
 import Headlines from "./components/Headlines.vue";
 import GeneralResults from "./components/GeneralResults.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+
 
 export default {
   name: "app",
