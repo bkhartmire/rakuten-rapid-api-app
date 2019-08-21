@@ -6,7 +6,15 @@
         <span>Metric Age:{{$store.state.generalResults.metricBirthdate}}days</span>
       </div>
       <div class="life-expectancy">
-        <span>Expected Year of Death: Male:{{$store.state.generalResults.lifeExpectancy.male}} Female:{{$store.state.generalResults.lifeExpectancy.female}}</span>
+        <h3>Life Expectancy:</h3>
+        <div class="male-life-expectancy">  Male:
+            <div class="yearOfDeath">Expected year of death: {{$store.state.generalResults.lifeExpectancy.male.year}} </div>
+            <div class="remainingYears">{{$store.state.generalResults.lifeExpectancy.male.remaining}} years left </div>
+        </div>
+        <div class="female-life-expectancy">Female:
+            <div class="yearOfDeath">Expected year of death: {{$store.state.generalResults.lifeExpectancy.female.year}} </div>
+            <div class="remainingYears">{{$store.state.generalResults.lifeExpectancy.female.remaining}} years left </div>
+        </div>
       </div>
       <div class="people-who-died">
         <span>Notable Deaths</span>
@@ -53,3 +61,12 @@ export default {
 //     "Died-anne Buried"
 //   ]
 // }
+
+    // topSong: { title: "whatever", artist: "whoever" },
+    // metricBirthdate: getAgeInDays(year, month, day),
+    // lifeExpectancy: timeLeft,
+
+    // location: { country: locationData.country, city: locationData.city },
+    // weather,
+    // birthdayBuddies: ["Name Namerson", "Namely Nameland"],
+    // peopleWhoDied: ["I. M. Dead", "Died-anne Buried"]

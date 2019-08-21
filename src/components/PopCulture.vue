@@ -1,12 +1,13 @@
 <template>
   <div id="general-results">
     <h1>Pop Culture</h1>
-    <div class="general" v-for="(value,key) in $store.generalResults">
-      <div class="metric-age"/>
-      <div class="life-expectancy"/>
-   
-      <div class="top-song"/>
+    <h2> Billboard #1 </h2>
+    <div class="billboard-artist">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+    <h2> Notable Birthday Buddies </h2>
+    <div v-for="buddy in $store.state.generalResults.birthdayBuddies">
+        <div>{{buddy}}</div>
     </div>
+
   </div>
 </template>
 
