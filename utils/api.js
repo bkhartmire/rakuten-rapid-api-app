@@ -93,9 +93,15 @@ const getWeather = async (lat, long, time) => {
   };
 };
 
+const getAgeInDays = (year, month, day) => {
+  const birthday = new Date(`${year}-${month}-${day}`);
+  const daysOld = (Date.now() - birthday.getTime()) / (1000 * 60 * 60 * 24);
+  return Math.round(daysOld);
+};
+
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
-  // Ex: { country: 'Japan', city: 'Toky', lat: 35.6882, long: 139.7532 }
+  // Ex: { country: 'Japan', city: 'Tokyo', lat: 35.6882, long: 139.7532 }
 
   const timeLeft = await getTimeLeft(locationData.country, year);
   // Ex: { male: { remaining: 63, year: 2082 }, female: { remaining: 70, year: 2089 } }
@@ -106,8 +112,9 @@ const getBirthdayData = async (year, month, day) => {
 
   const dummyObject = {
     topSong: { title: "whatever", artist: "whoever" },
-    metricBirthdate: "10000",
+    metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
+
     location: { country: locationData.country, city: locationData.city },
     weather,
     birthdayBuddies: ["Name Namerson", "Namely Nameland"],
@@ -116,5 +123,4 @@ const getBirthdayData = async (year, month, day) => {
   return dummyObject;
 };
 
-getBirthdayData("1995", "11", "29");
 module.exports = { getBirthdayData, getHeadlines };
