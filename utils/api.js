@@ -127,6 +127,24 @@ const getBirth = async (month, day) => {
   return resp.data.contents.pop();
 };
 
+const getTopSong = async (year, month, day) => {
+  const topSong = await axios.get(`https://billboard-api2.p.rapidapi.com/hot-100?date=${year}-${month}-${day}&range=1-10`, 
+  {
+    headers: {
+    "X-RapidAPI-Host": process.env.BILLBOARD_DATA_API_HOST,
+    "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
+    }
+  });
+
+  const songData = topSong.data;
+  
+  const song = {
+    title: songData.content[1].title,
+    artist: songData.content[1].artist
+  }
+  return song;
+};
+
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
   // Ex: { country: 'Japan', city: 'Tokyo', lat: 35.6882, long: 139.7532 }
@@ -146,8 +164,10 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { name: 'Gaetano Donizetti', occupation: 'Composer', notable: 'Lucia di Lammermoor', born: '1797-11-29', died: '1848-04-08' }
   // warning that some of these values might be null
 
+  const topSong = await getTopSong(year, month, day);
+
   const dummyObject = {
-    topSong: { title: "whatever", artist: "whoever" },
+    topSong: topSong,
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
     location: { country: locationData.country, city: locationData.city },
