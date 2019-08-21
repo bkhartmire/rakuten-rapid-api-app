@@ -51,10 +51,12 @@ export default {
 
 
 <style scoped>
-#existential-facts {
-  float: left;
-  width: 50%;
+#existential-facts{
+    display: inline-block;
+    width: 50%;
+    align-items: left;
 }
+
 </style>
 
 
