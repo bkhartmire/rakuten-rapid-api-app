@@ -135,13 +135,29 @@ const getTopSong = async (year, month, day) => {
     "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
     }
   });
+
   const songData = topSong.data;
+
+  const title = songData.content[1].title;
+  const artist = songData.content[1].artist;
+
+  const link = await getSongLink(title, artist);
+
   const song = {
-    title: songData.content[1].title,
-    artist: songData.content[1].artist
+    title,
+    artist,
+    link
   }
   return song;
  };
+
+ const getSongLink = async (title, artist) => {
+   const search = encodeURIComponent(title + "" + artist);
+   const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`
+   const searchResults = await axios.get(url);
+   const videoId = searchResults.data.items[0].id.videoId;
+   return `https://www.youtube.com/watch?v=${videoId}`;
+ }
 
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
@@ -177,4 +193,5 @@ const getBirthdayData = async (year, month, day) => {
   return dummyObject;
 };
 
+getTopSong("1992", "02", "01");
 module.exports = { getBirthdayData, getHeadlines };
