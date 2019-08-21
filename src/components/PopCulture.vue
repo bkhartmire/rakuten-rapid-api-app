@@ -1,5 +1,5 @@
 <template>
-  <div id="general-results">
+  <div id="pop-culture">
     <h1>Pop Culture</h1>
     <h2> Billboard #1 </h2>
     <div class="billboard-artist">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
@@ -14,11 +14,16 @@
 <script>
 
 export default {
-  name: 'general-results',
+  name: 'pop-culture',
 }
 </script>
 
 <style>
+#pop-culture {
+    float:right;
+    width:50%;
+
+}
 
 </style>
 
