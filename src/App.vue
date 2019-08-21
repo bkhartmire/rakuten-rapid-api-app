@@ -5,8 +5,16 @@
     <div v-if="$store.state.showGeneralResults">
       <GeneralResults />
     </div>
+    <div class="loading" v-if="!$store.state.showGeneralResults && $store.state.loadingGeneral">
+      Loading General Results...
+      <PulseLoader />
+    </div>
     <div v-if="$store.state.showHeadlinesResults">
       <Headlines />
+    </div>
+    <div class="loading" v-if="!$store.state.showHeadlinesResults && $store.state.loadingHeadlines">
+      Loading NY Times Headlines...
+      <PulseLoader />
     </div>
   </div>
 </template>
@@ -15,13 +23,15 @@
 import BirthdayFilter from "./components/BirthdayFilter.vue";
 import Headlines from "./components/Headlines.vue";
 import GeneralResults from "./components/GeneralResults.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
   name: "app",
   components: {
     BirthdayFilter,
     Headlines,
-    GeneralResults
+    GeneralResults,
+    PulseLoader
   }
 };
 </script>
@@ -34,5 +44,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.loading {
+  margin-top: 50px;
 }
 </style>
