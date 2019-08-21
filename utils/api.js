@@ -99,6 +99,34 @@ const getAgeInDays = (year, month, day) => {
   return Math.round(daysOld);
 };
 
+const getDeath = async (month, day) => {
+  const resp = await axios.get(
+    `https://random-facts1.p.rapidapi.com/fact/onthisday/died?day=${day}&month=${month}`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.RANDOM_FACTS_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key,
+        "X-Fungenerators-Api-Secret": process.env.X_FUNGENERATORS_API_SECRET_KEY
+      }
+    }
+  );
+  return resp.data.contents.pop();
+};
+
+const getBirth = async (month, day) => {
+  const resp = await axios.get(
+    `https://random-facts1.p.rapidapi.com/fact/onthisday/born?day=${day}&month=${month}`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.RANDOM_FACTS_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key,
+        "X-Fungenerators-Api-Secret": process.env.X_FUNGENERATORS_API_SECRET_KEY
+      }
+    }
+  );
+  return resp.data.contents.pop();
+};
+
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();
   // Ex: { country: 'Japan', city: 'Tokyo', lat: 35.6882, long: 139.7532 }
@@ -110,15 +138,22 @@ const getBirthdayData = async (year, month, day) => {
   const weather = await getWeather(locationData.lat, locationData.long, time);
   // Ex: { summary: 'Partly cloudy throughout the day.', tempHigh: '58.54 F', tempLow: '39.99 F' }
 
+  const personWhoDied = await getDeath(month, day);
+  // Ex: { name: 'Giambattista Bodoni', occupation: 'Publisher', notable: 'Italian printer', born: '1740-02-16', died: '1813-11-29' }
+  // warning that some of these values might be null
+
+  const birthdayBuddy = await getBirth(month, day);
+  // Ex: { name: 'Gaetano Donizetti', occupation: 'Composer', notable: 'Lucia di Lammermoor', born: '1797-11-29', died: '1848-04-08' }
+  // warning that some of these values might be null
+
   const dummyObject = {
     topSong: { title: "whatever", artist: "whoever" },
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy: timeLeft,
-
     location: { country: locationData.country, city: locationData.city },
     weather,
-    birthdayBuddies: ["Name Namerson", "Namely Nameland"],
-    peopleWhoDied: ["I. M. Dead", "Died-anne Buried"]
+    personWhoDied,
+    birthdayBuddy
   };
   return dummyObject;
 };
