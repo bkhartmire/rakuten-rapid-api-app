@@ -2,7 +2,6 @@ const axios = require("axios");
 require("dotenv").config();
 
 const getHeadlines = async (year, month, day) => {
-  console.log(year, month, day);
   if (month.length === 2 && month[0] === "0") {
     month = month[1];
   }
@@ -28,15 +27,31 @@ const getHeadlines = async (year, month, day) => {
   });
 };
 
+const getCountry = async () => {
+  const ipData = await axios.get(
+    `https://jkosgei-free-ip-geolocation-v1.p.rapidapi.com/?api-key=${
+      process.env.IP_DATA_API_KEY
+    }`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.IP_SKY_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  return ipData.data.country_name;
+};
+
 const getTimeLeft = async birthYear => {
+  const country = await getCountry();
   const date = new Date();
   const dateNow = date.toISOString().split("T")[0];
   const age = ~~dateNow.split("-")[0] - ~~birthYear;
   const male = await axios.get(
-    `http://54.72.28.201:80/1.0/life-expectancy/remaining/male/Japan/${dateNow}/${age}y/`
+    `http://54.72.28.201:80/1.0/life-expectancy/remaining/male/${country}/${dateNow}/${age}y/`
   );
   const female = await axios.get(
-    `http://54.72.28.201:80/1.0/life-expectancy/remaining/female/Japan/${dateNow}/${age}y/`
+    `http://54.72.28.201:80/1.0/life-expectancy/remaining/female/${country}/${dateNow}/${age}y/`
   );
 
   return {
@@ -116,9 +131,11 @@ const getTopSong = async (year, month, day) => {
 
 const getSongLink = async (title, artist) => {
   const search = encodeURIComponent(title + "" + artist);
+
   const url = `https://YoutubeDataApiserg-osipchukV1.p.rapidapi.com/getSearchResults?part=snippet&maxResults=1&q=${search}&key=${
     process.env.YOUTUBE_API_KEY
   }`;
+
   const searchResults = await axios.get(url, {
     headers: {
       "X-RapidAPI-Host": process.env.YOUTUBE_API_HOST,
@@ -143,11 +160,7 @@ const getBirthdayData = async (year, month, day) => {
   // Ex: { title: 'Like a Virgin', artist: 'Madonna', link: "someyoutubelink.com"}
 
   const result = {
-    topSong: {
-      title: "I'm Too Sexy",
-      artist: "Right Said Fred",
-      link: "https://www.youtube.com/embed/P5mtclwloEQ"
-    },
+    topSong: "hello",
     metricBirthdate: getAgeInDays(year, month, day),
     lifeExpectancy,
     personWhoDied,
@@ -156,4 +169,5 @@ const getBirthdayData = async (year, month, day) => {
   return result;
 };
 
+getTopSong("1995", "11", "29");
 module.exports = { getBirthdayData, getHeadlines };
