@@ -1,5 +1,6 @@
 <template>
   <div id="headlines">
+
     <BJumbotron header="Headlines" lead>
       <b-list-group>
         <div class="headline" v-for="headline in $store.state.headlinesResults">
@@ -13,6 +14,7 @@
           </b-list-group-item>
         </div>
       </b-list-group>
+
     </BJumbotron>
   </div>
 </template>
