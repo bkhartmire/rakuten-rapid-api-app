@@ -1,6 +1,8 @@
 <template>
   <div id="headlines">
+
     <BJumbotron header="Headlines" >
+
       <b-list-group>
         <div class="headline" v-for="headline in $store.state.headlinesResults">
           <b-list-group-item class="flex-column align-items-start">

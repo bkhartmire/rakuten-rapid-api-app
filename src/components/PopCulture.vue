@@ -1,6 +1,7 @@
 <template>
   <div id="pop-culture">
 
+
   <BJumbotron class="jumbo-pop" header="Pop Culture">
   <BListGroup>
   <BListGroupItem   class="flex-column align-items-start">
@@ -25,10 +26,15 @@
       >{{$store.state.generalResults.birthdayBuddy.born}} - {{$store.state.generalResults.birthdayBuddy.died}}</h4>
     </div>
 
-
+    <div class="fun-facts">
+            <h2>Trivia</h2>
+            <h4>{{$store.state.generalResults.dayFunFact}}</h4>
+            <h4>{{$store.state.generalResults.yearFunFact}}</h4>
+          </div>
     </BListGroupItem>
 
     </BListGroup>
+
 
     </BJumbotron>
   </div>
@@ -48,6 +54,7 @@ export default {
 
 <style>
 #pop-culture {
+
     flex:1;
     margin:20px;
     align-items: right;
@@ -55,6 +62,7 @@ export default {
 }
 .jumbo-pop {
     height:100%
+
 }
 
 </style>

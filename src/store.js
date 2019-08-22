@@ -14,9 +14,10 @@ export default new Vuex.Store({
     showHeadlinesResults: false,
     loadingGeneral: false,
     loadingHeadlines: false,
-    date: new Date(),
+    date: new Date(2018, 11, 31),
     disabledDates: {
-      to: new Date(1946, 0, 5)
+      to: new Date(1946, 0, 5),
+      from: new Date(2018, 11, 31)
     },
     generalResults: {},
     headlinesResults: []
