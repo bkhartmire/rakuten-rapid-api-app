@@ -6,7 +6,10 @@
   <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
     <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+<<<<<<< HEAD
+=======
     <iframe id="ytplayer" type="text/html" v-bind:src="$store.state.generalResults.topSong.link" frameborder="0"></iframe>
+>>>>>>> 7889d6c9ad2f5e0b2d8324c46243916887a7925d
     </BListGroupItem>
       <BListGroupItem   class="flex-column align-items-start">
     <div class="birthday-buddy">
