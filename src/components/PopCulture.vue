@@ -1,5 +1,6 @@
 <template>
   <div id="pop-culture">
+
   <BJumbotron class="jumbo-pop" header="Pop Culture">
   <BListGroup>
   <BListGroupItem   class="flex-column align-items-start">
@@ -27,28 +28,26 @@
 
     </BListGroupItem>
     </BListGroup>
+
     </BJumbotron>
-    
-
-
-  
   </div>
 </template>
 
 <script>
-import { BJumbotron, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import { BJumbotron, BListGroup, BListGroupItem } from "bootstrap-vue";
 
 export default {
-  name: 'pop-culture',
-  component:{
-      BListGroup,
-      BListGroupItem,
+  name: "pop-culture",
+  component: {
+    BListGroup,
+    BListGroupItem
   }
-}
+};
 </script>
 
 <style>
 #pop-culture {
+
     display: inline-block;
     width: 48%;
     margin:10px;
@@ -58,9 +57,8 @@ export default {
 .jumbo-pop {
 
     
+
 }
-
-
 </style>
 
 
