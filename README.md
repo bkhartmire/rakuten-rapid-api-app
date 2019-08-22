@@ -48,15 +48,18 @@ yarn start
 yarn lint
 ```
 
-### APIs used in this Project
+### Rakuten APIs used in this Project
 
 - [IP Geolocation](https://english.api.rakuten.net/jkosgei/api/free-ip-geolocation)
 - [Random Facts](https://english.api.rakuten.net/orthosie/api/random-facts1)
 - [Billboard](https://english.api.rakuten.net/LDVIN/api/billboard-api)
 - [Numbers](https://english.api.rakuten.net/divad12/api/numbers-1)
-- [YouTube](https://developers.google.com/youtube/v3/) (Not on Rakuten)
-- [NY Times Archives](https://developer.nytimes.com/docs/archive-product/1/overview)(Not on Rakuten)
-- [World Population](http://54.72.28.201/)(Not on Rakuten)
+
+### Non-Rakuten APIs used in this Project
+
+- [YouTube](https://developers.google.com/youtube/v3/)
+- [NY Times Archives](https://developer.nytimes.com/docs/archive-product/1/overview)
+- [World Population](http://54.72.28.201/)
 
 ### Collaborators
 
