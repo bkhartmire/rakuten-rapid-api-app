@@ -6,9 +6,9 @@
       <BListGroupItem class="metric-age flex-column align-items-start">
         <span>Metric Age: {{$store.state.generalResults.metricBirthdate}} days</span>
       </BListGroupItem>
-      <BListGroupItem class="life-expectancy flex-column align-items-start">
+      <BListGroupItem class="flex-column align-items-start">
         <h3>Life Expectancy:</h3>
-        <div class="male-life-expectancy">
+        <div class="life-expectancy">
           Male:
           <div
             class="yearOfDeath"
@@ -17,7 +17,7 @@
             class="remainingYears"
           >{{$store.state.generalResults.lifeExpectancy.male.remaining}} years left</div>
         </div>
-        <div class="female-life-expectancy">
+        <div class="life-expectancy">
           Female:
           <div
             class="yearOfDeath"
@@ -62,12 +62,17 @@ export default {
 <style scoped>
 #existential-facts{
     flex: 1;
-    margin:10px;
+    margin:20px;
     align-items: left;
     flex-grow:1;
 }
 .jumbo-existential{
     height:100%;
+}
+.life-expectancy {
+    width: 45%;
+    display: inline-block;
+    padding: 10px;
 }
 
 </style>

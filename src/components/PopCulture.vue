@@ -28,7 +28,6 @@
 
     </BListGroupItem>
 
-    </BListGroupItem>
     </BListGroup>
 
     </BJumbotron>
@@ -49,29 +48,15 @@ export default {
 
 <style>
 #pop-culture {
-<<<<<<< HEAD
     flex:1;
-=======
-
-    display: inline-block;
-    width: 48%;
->>>>>>> d05206b079e68b3daf9cf3615ebba470156ce16c
-    margin:10px;
+    margin:20px;
     align-items: right;
-    vertical-align: top;
     flex-grow:1;
 }
 .jumbo-pop {
-<<<<<<< HEAD
     height:100%
 }
 
-=======
-
-    
->>>>>>> d05206b079e68b3daf9cf3615ebba470156ce16c
-
-}
 </style>
 
 
