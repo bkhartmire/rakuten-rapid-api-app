@@ -168,7 +168,10 @@ const getYearFunFact = async year => {
       }
     }
   );
-  return resp.data.text + "in the year you were born.";
+  const sentence = resp.data.text[0]
+    .toUpperCase()
+    .concat(resp.data.text.slice(1));
+  return sentence + " in the year you were born.";
 };
 
 const getBirthdayData = async (year, month, day) => {
