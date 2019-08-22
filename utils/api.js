@@ -146,6 +146,35 @@ const getSongLink = async (title, artist) => {
   return `https://www.youtube.com/watch?v=${videoId}`;
 };
 
+const getDayFunFact = async (month, day) => {
+  const resp = await axios.get(
+    `https://numbersapi.p.rapidapi.com/${month}/${day}/date?fragment=true&json=true`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.FUNFACT_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  const sentence = resp.data.text[0]
+    .toUpperCase()
+    .concat(resp.data.text.slice(1));
+  return `${sentence} in the year ${resp.data.year}.`;
+};
+
+const getYearFunFact = async year => {
+  const resp = await axios.get(
+    `https://numbersapi.p.rapidapi.com/${year}/year?fragment=true&json=true`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.FUNFACT_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  return resp.data.text;
+};
+
 const getBirthdayData = async (year, month, day) => {
   const lifeExpectancy = await getTimeLeft(year);
   // Ex: { male: { remaining: 63, year: 2082 }, female: { remaining: 70, year: 2089 } }
@@ -159,9 +188,15 @@ const getBirthdayData = async (year, month, day) => {
   // const topSong = await getTopSong(year, month, day);
   // Ex: { title: 'Like a Virgin', artist: 'Madonna', link: "someyoutubelink.com"}
 
+  const dayFunFact = await getDayFunFact(month, day);
+
+  const yearFunFact = await getYearFunFact(year);
+
   const result = {
     topSong: "hello",
     metricBirthdate: getAgeInDays(year, month, day),
+    dayFunFact,
+    yearFunFact,
     lifeExpectancy,
     personWhoDied,
     birthdayBuddy
@@ -169,5 +204,4 @@ const getBirthdayData = async (year, month, day) => {
   return result;
 };
 
-getTopSong("1995", "11", "29");
 module.exports = { getBirthdayData, getHeadlines };
