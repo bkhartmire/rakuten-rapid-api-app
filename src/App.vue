@@ -3,7 +3,8 @@
     <img class="dethklok-logo" src="https://cdn11.bigcommerce.com/s-7va6f0fjxr/images/stencil/1280x1280/products/20177/82147/Dethklok-Metalocalypse__31269.1552172671.png?c=2&imbypass=on" alt="Dethklok Logo">
     <BirthdayFilter />
     <div v-if="$store.state.showGeneralResults">
-      <GeneralResults />
+      <GeneralResults /> 
+      <Trivia/>
     </div>
     <div class="loading" v-if="!$store.state.showGeneralResults && $store.state.loadingGeneral">
       Loading General Results...
@@ -24,6 +25,7 @@ import BirthdayFilter from "./components/BirthdayFilter.vue";
 import Headlines from "./components/Headlines.vue";
 import GeneralResults from "./components/GeneralResults.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import Trivia from "./components/Trivia.vue";
 
 
 export default {
@@ -32,7 +34,8 @@ export default {
     BirthdayFilter,
     Headlines,
     GeneralResults,
-    PulseLoader
+    PulseLoader,
+    Trivia
   }
 };
 </script>
