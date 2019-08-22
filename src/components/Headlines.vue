@@ -1,10 +1,9 @@
 <template>
   <div id="headlines">
-
-    <BJumbotron header="Headlines" lead>
+    <BJumbotron header="Headlines" >
       <b-list-group>
         <div class="headline" v-for="headline in $store.state.headlinesResults">
-          <b-list-group-item class="flex-column align-items-start gray">
+          <b-list-group-item class="flex-column align-items-start">
             <a
               v-bind:href="headline.web_url"
               target="_blank"
@@ -14,7 +13,6 @@
           </b-list-group-item>
         </div>
       </b-list-group>
-
     </BJumbotron>
   </div>
 </template>
@@ -32,9 +30,6 @@ export default {
 </script>
 
 <style>
-.gray {
-  background-color: gray;
-}
 b-list-group-item {
   background-color: light-gray;
 }

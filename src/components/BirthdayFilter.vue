@@ -1,7 +1,7 @@
 <template>
   <div class="birthday-filter">
     <h6>Please enter your birthday :</h6>
-    <Datepicker  input-class="dates" calendar-class="calendar" :disabled-dates="this.$store.state.disabledDates" v-model="date" name="datePicker"></Datepicker>
+    <Datepicker input-class="dates" wrapper-class="center" calendar-class="calendar" :disabled-dates="this.$store.state.disabledDates" v-model="date" name="datePicker"></Datepicker>
   </div>
 </template>
 
@@ -33,10 +33,9 @@ export default {
 <style >
   .dates{
     text-align:center;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
+  }
+  .center{
+    text-align:center !important;
   }
   h3 {
     margin: 40px 0 0;

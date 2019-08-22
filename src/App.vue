@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img class="dethklok-logo" src="https://cdn11.bigcommerce.com/s-7va6f0fjxr/images/stencil/1280x1280/products/20177/82147/Dethklok-Metalocalypse__31269.1552172671.png?c=2&imbypass=on" alt="Dethklok Logo">
     <BirthdayFilter />
     <div v-if="$store.state.showGeneralResults">
       <GeneralResults />
@@ -48,5 +49,10 @@ export default {
 
 .loading {
   margin-top: 50px;
+}
+
+.dethklok-logo{
+  width:60%;
+
 }
 </style>

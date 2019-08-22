@@ -27,15 +27,31 @@ const getHeadlines = async (year, month, day) => {
   });
 };
 
+const getCountry = async () => {
+  const ipData = await axios.get(
+    `https://jkosgei-free-ip-geolocation-v1.p.rapidapi.com/?api-key=${
+      process.env.IP_DATA_API_KEY
+    }`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.IP_SKY_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  return ipData.data.country_name;
+};
+
 const getTimeLeft = async birthYear => {
+  const country = await getCountry();
   const date = new Date();
   const dateNow = date.toISOString().split("T")[0];
   const age = ~~dateNow.split("-")[0] - ~~birthYear;
   const male = await axios.get(
-    `http://54.72.28.201:80/1.0/life-expectancy/remaining/male/Japan/${dateNow}/${age}y/`
+    `http://54.72.28.201:80/1.0/life-expectancy/remaining/male/${country}/${dateNow}/${age}y/`
   );
   const female = await axios.get(
-    `http://54.72.28.201:80/1.0/life-expectancy/remaining/female/Japan/${dateNow}/${age}y/`
+    `http://54.72.28.201:80/1.0/life-expectancy/remaining/female/${country}/${dateNow}/${age}y/`
   );
 
   return {
@@ -115,17 +131,42 @@ const getTopSong = async (year, month, day) => {
 
 const getSongLink = async (title, artist) => {
   const search = encodeURIComponent(title + "" + artist);
-  const url = `https://YoutubeDataApiserg-osipchukV1.p.rapidapi.com/getSearchResults?part=snippet&maxResults=1&q=${search}&key=${
-    process.env.YOUTUBE_API_KEY
-  }`;
-  const searchResults = await axios.get(url, {
-    headers: {
-      "X-RapidAPI-Host": process.env.YOUTUBE_API_HOST,
-      "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
-    }
-  });
+
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`
+  const searchResults = await axios.get(url);
+
+
   const videoId = searchResults.data.items[0].id.videoId;
   return `https://www.youtube.com/watch?v=${videoId}`;
+}
+
+const getDayFunFact = async (month, day) => {
+  const resp = await axios.get(
+    `https://numbersapi.p.rapidapi.com/${month}/${day}/date?fragment=true&json=true`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.FUNFACT_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  const sentence = resp.data.text[0]
+    .toUpperCase()
+    .concat(resp.data.text.slice(1));
+  return `${sentence} in the year ${resp.data.year}.`;
+};
+
+const getYearFunFact = async year => {
+  const resp = await axios.get(
+    `https://numbersapi.p.rapidapi.com/${year}/year?fragment=true&json=true`,
+    {
+      headers: {
+        "X-RapidAPI-Host": process.env.FUNFACT_API_HOST,
+        "X-RapidAPI-Key": process.env.X_RAPID_API_Key
+      }
+    }
+  );
+  return resp.data.text;
 };
 
 const getBirthdayData = async (year, month, day) => {
@@ -141,13 +182,15 @@ const getBirthdayData = async (year, month, day) => {
   // const topSong = await getTopSong(year, month, day);
   // Ex: { title: 'Like a Virgin', artist: 'Madonna', link: "someyoutubelink.com"}
 
+  const dayFunFact = await getDayFunFact(month, day);
+
+  const yearFunFact = await getYearFunFact(year);
+
   const result = {
-    topSong: {
-      title: "I'm Too Sexy",
-      artist: "Right Said Fred",
-      link: "https://www.youtube.com/embed/P5mtclwloEQ"
-    },
+    topSong: "hello",
     metricBirthdate: getAgeInDays(year, month, day),
+    dayFunFact,
+    yearFunFact,
     lifeExpectancy,
     personWhoDied,
     birthdayBuddy

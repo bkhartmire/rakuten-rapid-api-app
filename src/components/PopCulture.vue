@@ -6,7 +6,9 @@
   <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
     <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+
     <iframe id="ytplayer" type="text/html" v-bind:src="$store.state.generalResults.topSong.link" frameborder="0"></iframe>
+
     </BListGroupItem>
       <BListGroupItem   class="flex-column align-items-start">
     <div class="birthday-buddy">
@@ -26,7 +28,6 @@
 
     </BListGroupItem>
 
-    </BListGroupItem>
     </BListGroup>
 
     </BJumbotron>
@@ -47,18 +48,15 @@ export default {
 
 <style>
 #pop-culture {
-
-    display: inline-block;
-    width: 48%;
-    margin:10px;
+    flex:1;
+    margin:20px;
     align-items: right;
-    vertical-align: top;
+    flex-grow:1;
 }
 .jumbo-pop {
-
-    
-
+    height:100%
 }
+
 </style>
 
 
