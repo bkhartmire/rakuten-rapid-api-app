@@ -1,10 +1,15 @@
 <template>
   <div id="pop-culture">
-  <BJumbotron class="jumboPop" header="Pop Culture">
+
+  <BJumbotron class="jumbo-pop" header="Pop Culture">
   <BListGroup>
   <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
     <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
+<<<<<<< HEAD
+=======
+    <iframe id="ytplayer" type="text/html" v-bind:src="$store.state.generalResults.topSong.link" frameborder="0"></iframe>
+>>>>>>> 7889d6c9ad2f5e0b2d8324c46243916887a7925d
     </BListGroupItem>
       <BListGroupItem   class="flex-column align-items-start">
     <div class="birthday-buddy">
@@ -26,39 +31,37 @@
 
     </BListGroupItem>
     </BListGroup>
+
     </BJumbotron>
-    
-
-
-  
   </div>
 </template>
 
 <script>
-import { BJumbotron, BListGroup, BListGroupItem} from 'bootstrap-vue'
+import { BJumbotron, BListGroup, BListGroupItem } from "bootstrap-vue";
 
 export default {
-  name: 'pop-culture',
-  component:{
-      BListGroup,
-      BListGroupItem,
+  name: "pop-culture",
+  component: {
+    BListGroup,
+    BListGroupItem
   }
-}
+};
 </script>
 
 <style>
 #pop-culture {
+
     display: inline-block;
-    width: 50%;
+    width: 48%;
+    margin:10px;
     align-items: right;
     vertical-align: top;
 }
-.jumboPop {
-    padding:0;
+.jumbo-pop {
+
     
+
 }
-
-
 </style>
 
 

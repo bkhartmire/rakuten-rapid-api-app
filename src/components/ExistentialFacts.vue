@@ -1,11 +1,12 @@
 <template>
   <div id="existential-facts">
-    <h1>Existential Facts</h1>
+  <BJumbotron class="jumbo-existential" header="Existential Facts">
+  <BListGroup>
     <div class="general">
-      <div class="metric-age">
+      <BListGroupItem class="metric-age flex-column align-items-start">
         <span>Metric Age: {{$store.state.generalResults.metricBirthdate}} days</span>
-      </div>
-      <div class="life-expectancy">
+      </BListGroupItem>
+      <BListGroupItem class="life-expectancy flex-column align-items-start">
         <h3>Life Expectancy:</h3>
         <div class="male-life-expectancy">
           Male:
@@ -25,8 +26,8 @@
             class="remainingYears"
           >{{$store.state.generalResults.lifeExpectancy.female.remaining}} years left</div>
         </div>
-      </div>
-      <div class="person-who-died">
+      </BListGroupItem>
+      <BListGroupItem class="person-who-died flex-column align-items-start">
         <span>Notable Death on This Day</span>
         <h3>{{$store.state.generalResults.personWhoDied.name}}</h3>
         <h4
@@ -38,14 +39,22 @@
         <h4
           v-if="$store.state.generalResults.personWhoDied.born && $store.state.generalResults.personWhoDied.died"
         >{{$store.state.generalResults.personWhoDied.born}} - {{$store.state.generalResults.personWhoDied.died}}</h4>
-      </div>
+      </BListGroupItem>
     </div>
+  </BListGroup>
+  </BJumbotron>
   </div>
 </template>
 
 <script>
+import { BJumbotron, BListGroup, BListGroupItem} from 'bootstrap-vue'
+
 export default {
-  name: "ExistentialFacts"
+  name: "ExistentialFacts",
+   component:{
+      BListGroup,
+      BListGroupItem,
+  }
 };
 </script>
 
@@ -53,8 +62,11 @@ export default {
 <style scoped>
 #existential-facts{
     display: inline-block;
-    width: 50%;
+    width: 48%;
+    margin:10px;
     align-items: left;
+}
+.jumbo-existential{
 }
 
 </style>
