@@ -154,18 +154,11 @@ const getTopSong = async (year, month, day) => {
 
 const getSongLink = async (title, artist) => {
   const search = encodeURIComponent(title + "" + artist);
-  const url = `https://YoutubeDataApiserg-osipchukV1.p.rapidapi.com/getSearchResults?part=snippet&maxResults=1&q=${search}&key=${
-    process.env.YOUTUBE_API_KEY
-  }`;
-  const searchResults = await axios.get(url, {
-    headers: {
-      "X-RapidAPI-Host": process.env.YOUTUBE_API_HOST,
-      "X-RapidAPI-Key": process.env.BILLBOARD_DATA_API_KEY
-    }
-  });
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`
+  const searchResults = await axios.get(url);
   const videoId = searchResults.data.items[0].id.videoId;
   return `https://www.youtube.com/watch?v=${videoId}`;
-};
+}
 
 const getBirthdayData = async (year, month, day) => {
   const locationData = await getIPData();

@@ -4,7 +4,7 @@
   <BListGroup>
   <BListGroupItem   class="flex-column align-items-start">
     <h2> Billboard #1 </h2>
-    <!-- <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div> !-->
+    <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
     </BListGroupItem>
       <BListGroupItem   class="flex-column align-items-start">
     <div class="birthday-buddy">
