@@ -126,19 +126,21 @@ const getTopSong = async (year, month, day) => {
     artist,
     link
   };
+
   return song;
 };
 
 const getSongLink = async (title, artist) => {
   const search = encodeURIComponent(title + "" + artist);
 
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${
+    process.env.YOUTUBE_API_KEY
+  }`;
   const searchResults = await axios.get(url);
 
-
   const videoId = searchResults.data.items[0].id.videoId;
-  return `https://www.youtube.com/watch?v=${videoId}`;
-}
+  return `https://www.youtube.com/embed/${videoId}`;
+};
 
 const getDayFunFact = async (month, day) => {
   const resp = await axios.get(
@@ -153,7 +155,7 @@ const getDayFunFact = async (month, day) => {
   const sentence = resp.data.text[0]
     .toUpperCase()
     .concat(resp.data.text.slice(1));
-  return `${sentence} in the year ${resp.data.year}.`;
+  return `${sentence} on this day in the year ${resp.data.year}.`;
 };
 
 const getYearFunFact = async year => {
@@ -166,7 +168,7 @@ const getYearFunFact = async year => {
       }
     }
   );
-  return resp.data.text;
+  return resp.data.text + "in the year you were born.";
 };
 
 const getBirthdayData = async (year, month, day) => {
@@ -179,7 +181,7 @@ const getBirthdayData = async (year, month, day) => {
   const birthdayBuddy = await getBirth(month, day);
   // Ex: { name: 'Gaetano Donizetti', occupation: 'Composer', notable: 'Lucia di Lammermoor', born: '1797-11-29', died: '1848-04-08' }
 
-  // const topSong = await getTopSong(year, month, day);
+  const topSong = await getTopSong(year, month, day);
   // Ex: { title: 'Like a Virgin', artist: 'Madonna', link: "someyoutubelink.com"}
 
   const dayFunFact = await getDayFunFact(month, day);
@@ -187,7 +189,7 @@ const getBirthdayData = async (year, month, day) => {
   const yearFunFact = await getYearFunFact(year);
 
   const result = {
-    topSong: "hello",
+    topSong,
     metricBirthdate: getAgeInDays(year, month, day),
     dayFunFact,
     yearFunFact,
@@ -195,7 +197,8 @@ const getBirthdayData = async (year, month, day) => {
     personWhoDied,
     birthdayBuddy
   };
+  console.log(result);
   return result;
 };
-
+getBirthdayData(1995, 11, 29);
 module.exports = { getBirthdayData, getHeadlines };
