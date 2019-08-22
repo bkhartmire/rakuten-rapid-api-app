@@ -61,12 +61,13 @@ export default {
 
 <style scoped>
 #existential-facts{
-    display: inline-block;
-    width: 48%;
+    flex: 1;
     margin:10px;
     align-items: left;
+    flex-grow:1;
 }
 .jumbo-existential{
+    height:100%;
 }
 
 </style>

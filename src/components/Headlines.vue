@@ -3,7 +3,7 @@
   <BJumbotron header="Headlines">
   <b-list-group>
     <div v-for="headline in $store.state.headlinesResults">
-        <b-list-group-item   class="flex-column align-items-start gray">
+        <b-list-group-item   class="flex-column align-items-start">
         <div>{{headline.title}}</div>
         <div>{{headline.snippet}}</div>
         <a v-bind:href="headline.web_url">{{headline.web_url}}</a>
@@ -27,9 +27,6 @@ export default {
 </script>
 
 <style>
-.gray {
-    background-color:gray;
-}
 b-list-group-item {
     background-color:light-gray;
 }

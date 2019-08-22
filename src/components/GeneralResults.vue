@@ -20,7 +20,7 @@ export default {
 
 <style>
 #general-results {
-  style:block;
+  display:flex;
 }
 </style>
 

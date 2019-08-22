@@ -49,15 +49,14 @@ export default {
 
 <style>
 #pop-culture {
-    display: inline-block;
-    width: 48%;
+    flex:1;
     margin:10px;
     align-items: right;
     vertical-align: top;
+    flex-grow:1;
 }
 .jumbo-pop {
-
-    
+    height:100%
 }
 
 
