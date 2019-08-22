@@ -4,41 +4,41 @@
   <BListGroup>
     <div class="general">
       <BListGroupItem class="metric-age flex-column align-items-start">
-        <span>Metric Age: {{$store.state.generalResults.metricBirthdate}} days</span>
+        <h3>Metric Age {{$store.state.generalResults.metricBirthdate}} days</h3>
       </BListGroupItem>
       <BListGroupItem class="flex-column align-items-start">
-        <h3>Life Expectancy:</h3>
+        <h3>Life Expectancy</h3>
         <div class="life-expectancy">
-          Male:
+          <h4>Male</h4>
           <div
             class="yearOfDeath"
-          >Expected year of death: {{$store.state.generalResults.lifeExpectancy.male.year}}</div>
+          ><h5>Death Year {{$store.state.generalResults.lifeExpectancy.male.year}}</h5></div>
           <div
             class="remainingYears"
-          >{{$store.state.generalResults.lifeExpectancy.male.remaining}} years left</div>
+          ><h5>{{$store.state.generalResults.lifeExpectancy.male.remaining}} years left</h5></div>
         </div>
         <div class="life-expectancy">
-          Female:
+          <h4>Female</h4>
           <div
             class="yearOfDeath"
-          >Expected year of death: {{$store.state.generalResults.lifeExpectancy.female.year}}</div>
+          ><h5> Death Year {{$store.state.generalResults.lifeExpectancy.female.year}}</h5></div>
           <div
             class="remainingYears"
-          >{{$store.state.generalResults.lifeExpectancy.female.remaining}} years left</div>
+          ><h5>{{$store.state.generalResults.lifeExpectancy.female.remaining}} years left</h5></div>
         </div>
       </BListGroupItem>
       <BListGroupItem class="person-who-died flex-column align-items-start">
-        <span>Notable Death on This Day</span>
-        <h3>{{$store.state.generalResults.personWhoDied.name}}</h3>
-        <h4
+        <h3>Notable Death on This Day</h3>
+        <h4>{{$store.state.generalResults.personWhoDied.name}}</h4>
+        <h5
           v-if="$store.state.generalResults.personWhoDied.occupation"
-        >{{$store.state.generalResults.personWhoDied.occupation}}</h4>
-        <h4
+        >{{$store.state.generalResults.personWhoDied.occupation}}</h5>
+        <h5
           v-if="$store.state.generalResults.personWhoDied.notable"
-        >{{$store.state.generalResults.personWhoDied.notable}}</h4>
-        <h4
+        >{{$store.state.generalResults.personWhoDied.notable}}</h5>
+        <h5
           v-if="$store.state.generalResults.personWhoDied.born && $store.state.generalResults.personWhoDied.died"
-        >{{$store.state.generalResults.personWhoDied.born}} - {{$store.state.generalResults.personWhoDied.died}}</h4>
+        >{{$store.state.generalResults.personWhoDied.born}} - {{$store.state.generalResults.personWhoDied.died}}</h5>
       </BListGroupItem>
     </div>
   </BListGroup>
