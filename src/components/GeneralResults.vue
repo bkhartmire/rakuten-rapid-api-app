@@ -1,6 +1,5 @@
 <template>
   <div id="general-results">
-    <h1>General Results</h1>
     <ExistentialFacts />
     <PopCulture />
   </div>
