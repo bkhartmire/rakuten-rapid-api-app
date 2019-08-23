@@ -22,7 +22,7 @@ const getHeadlines = async (year, month, day) => {
   for (const headline of headlines) {
     result.add({
       web_url: headline.web_url,
-      title: headline.headline.main,
+      title: headline.headline.main.toUpperCase(),
       snippet: headline.snippet
     });
   }
