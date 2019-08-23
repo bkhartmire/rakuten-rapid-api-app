@@ -1,17 +1,15 @@
 <template>
-  <div id="headlines">
-
-    <BJumbotron header="Headlines" lead="Published on your birthday!">
-
-      <b-list-group>
-        <div class="headline" v-for="headline in $store.state.headlinesResults">
+  <div id="trivia">
+    <BJumbotron header="Trivia">
+      <b-list-group horiziontal="md">
+        <div class="fun-facts">
           <b-list-group-item class="flex-column align-items-start">
-            <a
-              v-bind:href="headline.web_url"
-              target="_blank"
-              class="headline-title"
-            >{{headline.title}}</a>
-            <div>{{headline.snippet}}</div>
+            <h6>Fun Fact On That Day</h6>
+            <h4>{{$store.state.generalResults.dayFunFact}}</h4>
+          </b-list-group-item>
+          <b-list-group-item class="flex-column align-items-start">
+            <h6>Fun Fact That Year</h6>
+            <h4>{{$store.state.generalResults.yearFunFact}}</h4>
           </b-list-group-item>
         </div>
       </b-list-group>
@@ -22,7 +20,7 @@
 <script>
 import { BJumbotron, BListGroup, BListGroupItem } from "bootstrap-vue";
 export default {
-  name: "headlines",
+  name: "trivia",
   component: {
     BJumbotron,
     "b-list-group": BListGroup,
@@ -36,13 +34,13 @@ b-list-group-item {
   background-color: light-gray;
 }
 
-#headlines {
+#trivia {
   overflow-y: scroll;
   height: 500px;
   margin: 20px;
 }
 
-.headline {
+.fun-facts {
   margin: 10px;
 }
 

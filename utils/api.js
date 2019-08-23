@@ -18,13 +18,15 @@ const getHeadlines = async (year, month, day) => {
       headline.type_of_material === "News"
     );
   });
-  return headlines.map(headline => {
-    return {
+  const result = new Set();
+  for (const headline of headlines) {
+    result.add({
       web_url: headline.web_url,
-      title: headline.headline.main,
+      title: headline.headline.main.toUpperCase(),
       snippet: headline.snippet
-    };
-  });
+    });
+  }
+  return Array.from(result);
 };
 
 const getCountry = async () => {
@@ -168,7 +170,10 @@ const getYearFunFact = async year => {
       }
     }
   );
-  return resp.data.text + "in the year you were born.";
+  const sentence = resp.data.text[0]
+    .toUpperCase()
+    .concat(resp.data.text.slice(1));
+  return sentence + " in the year you were born.";
 };
 
 const getBirthdayData = async (year, month, day) => {
@@ -197,8 +202,7 @@ const getBirthdayData = async (year, month, day) => {
     personWhoDied,
     birthdayBuddy
   };
-  console.log(result);
   return result;
 };
-getBirthdayData(1995, 11, 29);
+
 module.exports = { getBirthdayData, getHeadlines };
