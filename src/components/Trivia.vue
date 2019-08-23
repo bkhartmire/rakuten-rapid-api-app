@@ -1,18 +1,17 @@
 <template>
   <div id="trivia">
-
-    <BJumbotron header="Trivia" >
+    <BJumbotron header="Trivia">
       <b-list-group horiziontal="md">
         <div class="fun-facts">
           <b-list-group-item class="flex-column align-items-start">
             <h6>Fun Fact On That Day</h6>
             <h4>{{$store.state.generalResults.dayFunFact}}</h4>
           </b-list-group-item>
-         <b-list-group-item class="flex-column align-items-start">
+          <b-list-group-item class="flex-column align-items-start">
             <h6>Fun Fact That Year</h6>
             <h4>{{$store.state.generalResults.yearFunFact}}</h4>
-        </b-list-group-item>
-          </div>
+          </b-list-group-item>
+        </div>
       </b-list-group>
     </BJumbotron>
   </div>
@@ -35,13 +34,13 @@ b-list-group-item {
   background-color: light-gray;
 }
 
-#headlines {
+#trivia {
   overflow-y: scroll;
   height: 500px;
   margin: 20px;
 }
 
-.headline {
+.fun-facts {
   margin: 10px;
 }
 
