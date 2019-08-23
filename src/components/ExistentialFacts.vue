@@ -1,6 +1,6 @@
 <template>
   <div id="existential-facts">
-  <BJumbotron class="jumbo-existential" header="Existential Facts">
+  <BJumbotron class="jumbo-existential" header="Existential Facts" text-variant="white">
   <BListGroup>
     <div class="general">
       <BListGroupItem class="metric-age flex-column align-items-start">
@@ -68,11 +68,17 @@ export default {
 }
 .jumbo-existential{
     height:100%;
+    background-image:url("http://getwallpapers.com/wallpaper/full/3/d/d/693600-skulls-wallpaper-hd-1920x1080-for-lockscreen.jpg");
+    background-repeat:no-repeat;
+    background-position:left top;
 }
 .life-expectancy {
     width: 45%;
     display: inline-block;
     padding: 10px;
+}
+.general {
+    color:black;
 }
 
 </style>
