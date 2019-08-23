@@ -1,6 +1,6 @@
 <template>
   <div id="trivia">
-    <BJumbotron header="Trivia">
+    <BJumbotron class="trivia" header="Trivia" text-variant="white">
       <b-list-group horiziontal="md">
         <div class="fun-facts">
           <b-list-group-item class="flex-column align-items-start">
@@ -38,15 +38,27 @@ b-list-group-item {
   overflow-y: scroll;
   height: 500px;
   margin: 20px;
+ 
+
+  
 }
 
 .fun-facts {
   margin: 10px;
+  color:black;
+   
 }
 
 .headline-title {
   font-size: 1.5em;
   color: black;
   font-family: RelayCond, Arial, serif;
+}
+
+.trivia{
+    background-image:url("http://alena-vysotskaya.ru/images/500/DSC100586336.jpg");
+  background-repeat:no-repeat;
+  background-position:left top;
+  background-size:cover;
 }
 </style>

@@ -2,8 +2,8 @@
   <div id="pop-culture">
 
 
-  <BJumbotron class="jumbo-pop" header="Pop Culture">
-  <BListGroup>
+  <BJumbotron class="jumbo-pop" header="Pop Culture" text-variant="white">
+  <BListGroup class="pop-group">
   <BListGroupItem   class="flex-column align-items-start">
     <h3> Billboard #1 </h3>
     <div class="billboard-artist text-muted">{{$store.state.generalResults.topSong.title}} by {{$store.state.generalResults.topSong.artist}}</div>
@@ -55,8 +55,16 @@ export default {
     flex-grow:1;
 }
 .jumbo-pop {
-    height:100%
+    height:100%;
+    background-image:url("https://images.unsplash.com/photo-1433888104365-77d8043c9615?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80");
+    background-repeat:no-repeat;
+    background-position:left top;
+    background-size:cover;
 
+}
+
+.pop-group{
+    color:black;
 }
 
 </style>
