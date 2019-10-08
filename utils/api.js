@@ -6,9 +6,7 @@ const getHeadlines = async (year, month, day) => {
     month = month[1];
   }
   const resp = await axios.get(
-    `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json?api-key=${
-      process.env.NY_TIMES_API_KEY
-    }`
+    `https://api.nytimes.com/svc/archive/v1/${year}/${month}.json?api-key=${process.env.NY_TIMES_API_KEY}`
   );
 
   const headlines = resp.data.response.docs.filter(headline => {
@@ -31,9 +29,7 @@ const getHeadlines = async (year, month, day) => {
 
 const getCountry = async () => {
   const ipData = await axios.get(
-    `https://jkosgei-free-ip-geolocation-v1.p.rapidapi.com/?api-key=${
-      process.env.IP_DATA_API_KEY
-    }`,
+    `https://jkosgei-free-ip-geolocation-v1.p.rapidapi.com/?api-key=${process.env.IP_DATA_API_KEY}`,
     {
       headers: {
         "X-RapidAPI-Host": process.env.IP_SKY_HOST,
@@ -135,9 +131,7 @@ const getTopSong = async (year, month, day) => {
 const getSongLink = async (title, artist) => {
   const search = encodeURIComponent(title + "" + artist);
 
-  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${
-    process.env.YOUTUBE_API_KEY
-  }`;
+  const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${search}&key=${process.env.YOUTUBE_API_KEY}`;
   const searchResults = await axios.get(url);
 
   const videoId = searchResults.data.items[0].id.videoId;
@@ -177,7 +171,7 @@ const getYearFunFact = async year => {
 };
 
 const getBirthdayData = async (year, month, day) => {
-  const lifeExpectancy = await getTimeLeft(year);
+  // const lifeExpectancy = await getTimeLeft(year);
   // Ex: { male: { remaining: 63, year: 2082 }, female: { remaining: 70, year: 2089 } }
 
   const personWhoDied = await getDeath(month, day);
@@ -198,7 +192,7 @@ const getBirthdayData = async (year, month, day) => {
     metricBirthdate: getAgeInDays(year, month, day),
     dayFunFact,
     yearFunFact,
-    lifeExpectancy,
+    // lifeExpectancy,
     personWhoDied,
     birthdayBuddy
   };
