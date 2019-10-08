@@ -5,7 +5,7 @@
 
 # DethKlock
 
-DethKlok was completed during our time as students at Code Chrysalis. It is a project designed to use the API's on [Rakuten Rapid API's platform](https://english.api.rakuten.net/). This application takes a user birthday input and returns a collection of fascinating data:
+DethKlok was completed during our time as students at Code Chrysalis. It is a project designed to use the API's on [Rakuten Rapid API's platform](https://english.api.rakuten.net/). This project was presented to the Rakuten Rapid API team along with feedback about our user experience on their platform. This application takes a user birthday input and returns a collection of fascinating data:
 
 - How many days you've been alive
 - Based on IP address country's average life expectancy rates, how many years left you have to live
@@ -15,6 +15,8 @@ DethKlok was completed during our time as students at Code Chrysalis. It is a pr
 - Historical event trivia about the day you were born
 - Historical event trivia about the year you were born
 - All of the NY Times articles published on the day you were born
+
+View the deployed version [here](https://deth-klok.herokuapp.com/).
 
 ## Project setup
 
